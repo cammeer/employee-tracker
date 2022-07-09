@@ -1,8 +1,17 @@
+const mysql = require('mysql2');
 const inquirer = require('inquirer');
-const mysql = require("mysql");
-const consoleTable = require("console.table");
+const cTable = require('console.table');
 
+const PORT = process.env.PORT || 3001;
 
-
-//mabye an initial question list?
-//then prompts for eveyrthing else
+//connect to database
+const db = mysql.createConnection({
+        host: 'localhost',
+        //Your MySQL username,
+        user: 'root',
+        //Your MySQL password
+        password: '',
+        database: 'tracker'
+    },
+    console.log('Connected to the tracker database.')
+);
