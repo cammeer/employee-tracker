@@ -1,5 +1,5 @@
--- not sure if I need this here and/or in the db file
-use tracker;
+-- -- not sure if I need this here and/or in the db file
+-- use tracker;
 
 insert into department (name)
 values ("Command/Bridge");
