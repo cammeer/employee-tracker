@@ -3,7 +3,8 @@
   ## Description
   This application allows you to view Star Trek Enterprise departments, employees, and roles, as well as add new departments. Further functionality is on the way!
 
-![Employee Tracker](./assets/images/teamprofile.png)
+![Employee Tracker](./tracker1.png)
+![Employee Tracker](./tracker2.png)
  
   ## Table of Contents
   * [Installation](#installation)
