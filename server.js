@@ -41,7 +41,7 @@ function start() {
 
             switch (result.option) {
                 case "View all departments":
-                    viewDepartment();
+                    viewAllDepts();
                     break;
                 case "View all roles":
                     viewRoles();
@@ -68,3 +68,16 @@ function start() {
 }
 
 start();
+
+// view all departments
+function viewAllDepts() {
+
+    let query = "SELECT name AS id FROM department;";
+
+    db.query(query, function(err, res) {
+
+        if (err) throw err;
+
+        console.table(res);
+    });
+};
