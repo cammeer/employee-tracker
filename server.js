@@ -19,6 +19,24 @@ db.connect(function(err) {
 
 });
 
+// update server
+function updateServer() {
+    db.query("SELECT * from role", function(error, res) {
+        allroles = res.map(role => ({ name: role.title, value: role.id }));
+    });
+
+    db.query("SELECT * from department", function(error, res) {
+        alldepartments = res.map(dept => ({ name: dept.name, value: dept.id }));
+    });
+
+    db.query("SELECT * from employee", function(error, res) {
+        allemployees = res.map(employee => ({
+            name: `${employee.first_name} ${employee.last_name}`,
+            value: employee.id
+        }));
+    });
+}
+
 function start() {
     inquirer
         .prompt({
@@ -81,7 +99,7 @@ function viewAllDepts() {
 
 // view all star trek enterprise employee roles
 function viewAllRoles() {
-    let query = "SELECT title, salary AS id FROM role;";
+    let query = "SELECT title, salary, department_id FROM role;";
     db.query(query, function(err, res) {
         if (err) throw err;
         console.table(res);
@@ -91,10 +109,58 @@ function viewAllRoles() {
 
 // view all star trek enterprise employees
 function viewAllEmployees() {
-    let query = "SELECT first_name, last_name AS id FROM employee;";
+    let query = "SELECT first_name, last_name, role_id FROM employee;";
     db.query(query, function(err, res) {
         if (err) throw err;
         console.table(res);
     });
     start(inquirer.prompt);
 };
+
+//adding dept
+function addDepartment() {
+    updateServer();
+    inquirer
+        .prompt([{
+            type: "input",
+            name: "new_department",
+            message: "Enter a new department"
+        }])
+        .then(function(answer) {
+            var query = db.query(
+                "INSERT INTO department SET ?", {
+                    name: answer.new_department
+                },
+                function(err, res) {
+                    if (err) throw err;
+                    console.table("\nDepartment added!\n");
+                    updateServer();
+                    start(inquirer.prompt);
+                }
+            );
+        });
+}
+
+//adding role
+function addRole() {
+    updateServer();
+    inquirer
+        .prompt([{
+            type: "input",
+            name: "new_role",
+            message: "Enter a new role"
+        }])
+        .then(function(answer) {
+            var query = db.query(
+                "INSERT INTO role SET ?", {
+                    name: answer.new_role
+                },
+                function(err, res) {
+                    if (err) throw err;
+                    console.table("\nRole added!\n");
+                    updateServer();
+                    start(inquirer.prompt);
+                }
+            );
+        });
+}
