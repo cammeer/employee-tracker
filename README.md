@@ -18,7 +18,7 @@
   Installation instructions will be provided when this application has been updated.
   
   ## Usage
-  Usage instructions will be provided soon! Here's a link to a video showing basic operation: [Google Drive Link](https://drive.google.com/file/d/1JUgEetmfkSpzqg8rKBoa-uYVZssz9X3w/view)
+  Usage instructions will be provided soon! Here's a link to a video showing basic operation: [Google Drive Link](https://drive.google.com/file/d/1st8rQeNlnzgXA91v05zQGycxAxnofi-_/view)
  
   ## License
  Copyright © 2022 [Caren Merz](https://github.com/cammeer). <br />
