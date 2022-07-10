@@ -36,6 +36,35 @@ function start() {
                 "Exit"
             ]
         })
+        .then(function(result) {
+            console.log("You entered: " + result.option);
+
+            switch (result.option) {
+                case "View all departments":
+                    viewDepartment();
+                    break;
+                case "View all roles":
+                    viewRoles();
+                    break;
+                case "View all employees":
+                    viewEmployees();
+                    break;
+                case "Add a department":
+                    addDepartment();
+                    break;
+                case "Adda  role":
+                    addRole();
+                    break;
+                case "Add an employee":
+                    addEmployee();
+                    break;
+                case "Update an employee role":
+                    updateEmployee();
+                    break;
+                default:
+                    exit();
+            }
+        });
 }
 
 start();
