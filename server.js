@@ -44,10 +44,10 @@ function start() {
                     viewAllDepts();
                     break;
                 case "View all roles":
-                    viewRoles();
+                    viewAllRoles();
                     break;
                 case "View all employees":
-                    viewEmployees();
+                    viewAllEmployees();
                     break;
                 case "Add a department":
                     addDepartment();
@@ -69,15 +69,32 @@ function start() {
 
 start();
 
-// view all departments
+// view all star trek enterprise departments
 function viewAllDepts() {
-
-    let query = "SELECT name AS id FROM department;";
-
+    let query = "SELECT id, name FROM department;";
     db.query(query, function(err, res) {
-
         if (err) throw err;
-
         console.table(res);
     });
+    start(inquirer.prompt);
+};
+
+// view all star trek enterprise employee roles
+function viewAllRoles() {
+    let query = "SELECT title, salary AS id FROM role;";
+    db.query(query, function(err, res) {
+        if (err) throw err;
+        console.table(res);
+    });
+    start(inquirer.prompt);
+};
+
+// view all star trek enterprise employees
+function viewAllEmployees() {
+    let query = "SELECT first_name, last_name AS id FROM employee;";
+    db.query(query, function(err, res) {
+        if (err) throw err;
+        console.table(res);
+    });
+    start(inquirer.prompt);
 };
